@@ -6,7 +6,7 @@ public class User {
 
     private Long id;
 
-    // 用户名+testxiugai
+    // 用户名+testxiugai   master   xiugai
     private String userName;
 
     // 密码
