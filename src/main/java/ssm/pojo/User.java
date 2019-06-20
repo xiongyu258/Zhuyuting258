@@ -108,5 +108,8 @@ public class User {
                 + ", age=" + age + ", sex=" + sex + ", birthday=" + birthday + ", created=" + created
                 + ", updated=" + updated + "]";
     }
+    public String aa(){
+        return "aa";
+    }
 
 }
