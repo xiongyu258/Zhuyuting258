@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--构建SqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--指定mybatis全局配置文件-->
+        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <!--注入数据源-->
+        <property name="dataSource" ref="dataSource"/>
+
+        <!--引入映射文件-->
+        <property name="mapperLocations" value="classpath:mybatis/mapper/**/*.xml"/>
+
+        <!--别名扫描-->
+        <property name="typeAliasesPackage" value="ssm.pojo"/>
+
+    </bean>
+
+
+    <!--配置Mapper接口-->
+    <!-- <bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"  >
+         <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+
+         <property name="mapperInterface"  value="cn.itcast.ssm.mapper.UserMapper"/>
+     </bean>-->
+
+
+    <!--批量进行接口代理-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="ssm.mapper"/>
+    </bean>
+
+
+</beans>
